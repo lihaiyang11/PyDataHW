@@ -1,0 +1,28 @@
+ex_features.py 为提取16个特征值的代码，分别为：
+        bearing
+        label_pick
+        label_drop
+        centroid_pick_long
+        centroid_pick_lat
+        centroid_drop_long
+        centroid_drop_lat
+        hvsine_pick_cent_p
+        hvsine_drop_cent_d
+        hvsine_cent_p_cent_d
+        manhtn_pick_cent_p
+        manhtn_drop_cent_d
+        manhtn_cent_p_cent_d
+        bearing_pick_cent_p
+        bearing_drop_cent_p
+        bearing_cent_p_cent_d
+
+visualization.py 为分别对16个特征值与trip_duration的关系图
+
+models.py为对这次预测的模型构建。文件中一共实现了三个简单的模型：GBDT，SGD Regressor（随机梯度下降），adaboost classifier
+SGD预测出很多负值..所以弃了
+adaboost分类器不适用回归分析，会造成内存炸，即使缩减了决策树的深度与训练集的大小
+最终选择GBDT模型
+
+Tuning.py为对GBDT的参数进行调参的过程。主要运用了GridSearchCV模型，控制变量，对待调参数的区间进行多次试验。
+由于预测会出现负值的原因，所以使用neg_mean_squared_log_error的scoring计数方式会造成报错，而且不好处理。所以只能用neg_mean_squared_error的scoring方式来替代
+所以对实际预测的结果还是有一定的偏差，最后需要一定的手动微调来完成最后参数调整

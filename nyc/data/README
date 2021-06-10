@@ -1,0 +1,6 @@
+数据部分，包括：
+     train.csv是起始数据，（信息太大）
+     weather.csv:天气数据
+     fastest_routes：最快路径数据（信息太大）
+     holiday.csv:节假日信息。
+     信息太大的请在这里下载https://www.kaggle.com/karelrv/nyct-from-a-to-z-with-xgboost-tutorial/data

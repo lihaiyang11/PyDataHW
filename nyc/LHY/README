@@ -1,0 +1,10 @@
+三个提取特征的文件:
+              get_pca_var.py，
+              hav_var.py,
+              wea_and_turn.py
+特征提取函数在ex_feature中，可以直接运行该文件，会读取本地的train.csv,并把加入特征后的表格写入result.csv
+
+可视化：visualization.py 文件中包含多个函数，每个函数都可以单独运行得到画出的图像，已经画好的图像存储在picture文件夹中
+
+模型：model.py ，python自带的线性回归模型，很简单结果不太好，目前只用我自己的变量测了一下。结果0.57的评分加入新的变量可能会好一些
+

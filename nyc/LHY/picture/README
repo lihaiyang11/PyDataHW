@@ -1,0 +1,14 @@
+all-feature.png： 画出了我这里所有变量的相关性关系，图中给出了比较详细的坐标，
+
+天气相关：
+    min_tempreture.png:给出了最低气温和duration的相关曲线图，横轴是气温，纵轴是duation
+    snow_depth: 横轴是snow_depth
+    snow_fall：横轴是snow_fall
+    prectipitation.png:横轴是preciitatio
+turn相关：
+    turnleft.png:
+    right.png
+    straight.png
+PCA相关：
+    pca_arrange.png:给出了pca的四个变量的分布
+    pickup_pca_duration.png:给出了pickup_pca0，pick_pca1为坐标的duration的散点图，过滤了极大值极小值，颜色深的区域代表duration时间长

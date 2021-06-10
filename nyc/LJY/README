@@ -1,0 +1,27 @@
+1是数据的概览
+
+2-7程序执行后 图表显示数据分布及其与旅行时间的大致相关曲线
+
+feature1 提取时间及距离
+
+get_result1 get_result2 get_result3将处理过的数据加入result.csv
+
+model 三个回归模型，xgb来自kernel，作为参考。
+      version0用了25个feature，version1用了以下40个feature，比version0的效果要好。
+     
+picture文件夹中是输出的图表及回归模型分数评估
+
+feature_cols = ['vendor_id','passenger_count','pickup_longitude',
+                'pickup_latitude','dropoff_longitude','dropoff_latitude',
+                'trip_duration','total_distance','total_travel_time',
+                'number_of_steps','pick_month','hour','week_of_year','day_of_year',
+                'day_of_week','hvsine_pick_drop','manhtn_pick_drop','bearing',
+                'pickup_pca0','pickup_pca1','dropoff_pca0','dropoff_pca1',
+                'havsine_pick_drop','speed_hvsn','speed_manhtn','label_pick','label_drop',
+                'centroid_pick_long','centroid_pick_lat','centroid_drop_long',
+                'centroid_drop_lat','hvsine_pick_cent_p','hvsine_drop_cent_d',
+                'hvsine_cent_p_cent_d','manhtn_pick_cent_p','manhtn_drop_cent_d',
+                'manhtn_cent_p_cent_d','bearing_pick_cent_p','bearing_drop_cent_p',
+                'bearing_cent_p_cent_d']
+                
+

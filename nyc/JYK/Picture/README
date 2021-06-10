@@ -1,0 +1,25 @@
+all_features.png 为所有特征值之间的Pearson相关系数热点图
+
+离散特征值用折线图表示，纵坐标为对应trip_duration的平均值
+连续特征值用回归图表示（虽然regplot并不能给出线性回归关系，仅仅是描点），一个点表示（特征值，trip_duration)
+方位特征值：
+        bearing
+        bearing_pick_cent_p
+        bearing_drop_cent_p
+        bearing_cent_p_cent_d
+标签特征值：
+        label_pick
+        label_drop
+所属集群的经纬度特征值：
+        centroid_pick_long
+        centroid_pick_lat
+        centroid_drop_long
+        centroid_drop_lat
+hvsine距离特征值：
+        hvsine_pick_cent_p
+        hvsine_drop_cent_d
+        hvsine_cent_p_cent_d
+manhtn距离特征值：
+        manhtn_pick_cent_p
+        manhtn_drop_cent_d
+        manhtn_cent_p_cent_d
