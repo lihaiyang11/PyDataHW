@@ -122,17 +122,21 @@ def assign_cluster(df, k):
 
 # 直行，左转右转的数量，
 def get_turn_number(dataframe):
-    datafr1 = pd.read_csv("../data/fastest_routes_train_part_1.csv")
-    datafr2 = pd.read_csv("../data/fastest_routes_train_part_2.csv")
-    datafr = pd.concat([datafr1, datafr2])
-
-    datafr['straight'] = 0
-    datafr['right'] = 0
-    datafr['left'] = 0
-    datafr['straight'], datafr['left'], datafr['right'] = zip(*datafr['step_direction'].map(freq_turn))
-
-    data_new = datafr[['id', 'total_distance', 'total_travel_time', 'straight', 'right', 'left']]
-    dataframe = pd.merge(dataframe, data_new, on='id', how='left')
+    # datafr1 = pd.read_csv("../data/fastest_routes_train_part_1.csv")
+    # datafr2 = pd.read_csv("../data/fastest_routes_train_part_2.csv")
+    # datafr = pd.concat([datafr1, datafr2])
+    #
+    # datafr['straight'] = 0
+    # datafr['right'] = 0
+    # datafr['left'] = 0
+    # datafr['straight'], datafr['left'], datafr['right'] = zip(*datafr['step_direction'].map(freq_turn))
+    #
+    # data_new = datafr[['id','straight', 'right', 'left']]
+    # dataframe = pd.merge(dataframe, data_new, on='id', how='left')
+    dataframe['straight'] = 0
+    dataframe['right'] = 0
+    dataframe['left'] = 0
+    dataframe['straight'], dataframe['left'], dataframe['right'] = zip(*dataframe['step_direction'].map(freq_turn))
     return dataframe
 
 
@@ -163,7 +167,6 @@ def get_holiday(dataframe):
     holiday = pd.read_csv('../data/holiday.csv')
 
     holiday['date'] = pd.to_datetime(holiday['date'])
-    print(holiday.head())
     holiday['is_holiday'] = list(map(float, holiday['is_holiday']))
     dataframe['pickup_datetime'] = pd.to_datetime(dataframe['pickup_datetime'])
     dataframe['date'] = dataframe['pickup_datetime'].dt.date
@@ -213,6 +216,7 @@ def get_dateinfo(dataframe):
     dataframe.loc[:, 'week_of_year'] = dataframe['pickup_datetime'].dt.weekofyear
     dataframe.loc[:, 'day_of_year'] = dataframe['pickup_datetime'].dt.dayofyear
     dataframe.loc[:, 'day_of_week'] = dataframe['pickup_datetime'].dt.dayofweek
+    return dataframe
 
 
 def get_cluster(dataframe):
@@ -243,6 +247,7 @@ def get_havsine_info(dataframe):
                                                 dataframe['pickup_longitude'],
                                                 dataframe['dropoff_latitude'],
                                                 dataframe['dropoff_longitude'])
+    # speed_hvsn = havsine_pick_drop / travel_time;
     dataframe['speed_hvsn'] = dataframe['havsine_pick_drop'].values / dataframe['total_travel_time'].values
     # pick点到drop集群中心，drop点到pick集群中心。
     dataframe['hvsine_pick_cent_d'] = haversine_(dataframe['pickup_latitude'].values,
@@ -273,5 +278,6 @@ def get_manhatn_info(dataframe):
                                                           dataframe['pickup_longitude'],
                                                           dataframe['dropoff_latitude'],
                                                           dataframe['dropoff_longitude'])
+    # speed_manhtn = manhtn_pick_drop / travel_time
     dataframe['speed_manhtn'] = dataframe['manhtn_pick_drop'].values / dataframe['total_travel_time'].values
     return dataframe
